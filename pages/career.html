@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - Jaiho Labs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Serif:ital,wght@1,400&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset & Font */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0f0f23; /* Deep space background */
+            color: #e2e8f0; /* Cool Gray text */
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif; /* Futuristic heading font */
+            color: #f8fafc; /* Silver White for headings */
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a202c; /* Darker scrollbar track */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #7c3aed; /* Plasma Purple scrollbar thumb */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4f46e5; /* Indigo Blue on hover */
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 35, 0.8); /* Dark background with transparency */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none; /* Ensure logo link is not underlined */
+        }
+
+        .logo-main {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7); /* Vibrant gradient for logo icon */
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.3);
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, #a855f7); /* White to Plasma Purple gradient */
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #cbd5e1; /* Cool Gray for navigation links */
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #a855f7; /* Plasma Purple on hover */
+            background: rgba(168, 85, 247, 0.1); /* Subtle background on hover */
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: #cbd5e1; /* Cool Gray for hamburger lines */
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 15, 35, 0.95); /* Dark background with more transparency */
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            transform: translateY(-100%);
+            transition: transform 0.4s ease-in-out;
+            z-index: 999;
+            padding-top: 60px;
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+        }
+
+        .mobile-menu a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 1.8rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: #a855f7; /* Plasma Purple */
+        }
+
+        /* Hero Section (for Careers page) */
+        .page-hero {
+            height: 50vh; /* Shorter hero for internal pages */
+            background: linear-gradient(135deg, #0f0f23 0%, #1e1b4b 50%, #312e81 100%); /* Deep space gradient */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px; /* Account for fixed nav */
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), /* Blue-purple subtle glow */
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.3) 0%, transparent 50%), /* Plasma Purple subtle glow */
+                radial-gradient(circle at 40% 80%, rgba(168, 85, 247, 0.2) 0%, transparent 50%); /* Lavender Mist subtle glow */
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .page-hero-content {
+            z-index: 2; /* Ensure content is above floating gradients */
+            max-width: 900px;
+            padding: 0 2rem;
+            position: relative;
+            color: #f8fafc; /* Silver White for hero text */
+        }
+
+        .page-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #a855f7, #06b6d4); /* White to Plasma Purple to Cyan gradient */
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .page-hero p {
+            font-size: 1.3rem;
+            color: #cbd5e1; /* Cool Gray */
+            font-weight: 400;
+            animation: fadeInUp 1.s ease-out 0.3s both;
+        }
+
+        /* Keyframes for particle movement */
+        @keyframes particleMove {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translate(var(--tx), var(--ty)) scale(1.2);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.5;
+            }
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6); /* Indigo Blue to Plasma Purple */
+            color: white;
+            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1); /* Transparent white with blur */
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.4); /* Enhanced shadow on hover */
+        }
+
+        /* Glass Card Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05); /* Light transparent white */
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.08); /* Slightly less transparent on hover */
+            border-color: rgba(168, 85, 247, 0.3); /* Plasma Purple border on hover */
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, #a855f7); /* White to Plasma Purple gradient */
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Job Listings Section */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-color: #8b5cf6;
+            color: white;
+        }
+
+        .job-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .job-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .job-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .job-card:hover::before {
+            opacity: 1;
+        }
+
+        .job-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(168, 85, 247, 0.4);
+            box-shadow: 0 25px 60px rgba(168, 85, 247, 0.2);
+        }
+
+        .job-card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .job-card h3 {
+            font-size: 1.8rem;
+            color: #a855f7;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-card .department {
+            font-size: 1rem;
+            color: #67e8f9;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .job-card p {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            margin-bottom: 1rem;
+        }
+
+        .job-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-chip {
+            background: rgba(6, 182, 212, 0.2);
+            color: #67e8f9;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+
+        /* Why Join Us Section */
+        .why-join-us .glass-card {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem;
+        }
+        .why-join-us h3 {
+            font-size: 2.2rem;
+            color: #06b6d4;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .why-join-us ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .why-join-us li {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .why-join-us li i {
+            color: #8b5cf6;
+            font-size: 1.5rem;
+        }
+        .why-join-us li span {
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #a855f7; /* Plasma Purple */
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #c4b5fd; /* Lavender Mist */
+        }
+
+
+        /* Contact Form (reused) */
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: #e2e8f0;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(20px);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        /* Floating Submit Idea Button */
+        .floating-submit-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: #f8fafc;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 900;
+            text-transform: uppercase;
+        }
+
+        .floating-submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(192, 132, 252, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 15, 35, 0.8);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #a855f7;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #a855f7;
+        }
+
+        .footer-socials a {
+            color: #cbd5e1;
+            font-size: 1.8rem;
+            margin-right: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-socials a:hover {
+            color: #a855f7;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .sub-brand {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-top: 0.5rem;
+        }
+        .sub-brand a {
+            color: #4f46e5;
+            text-decoration: underline;
+        }
+        .sub-brand a:hover {
+            color: #7c3aed;
+        }
+
+        /* Custom Message Box Styles */
+        .message-box {
+            background: #1a202c;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .message-box-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .message-box-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .message-box {
+            background: #1a202c;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            color: #f1f5f9;
+            border: 1px solid #7c3aed;
+        }
+
+        .message-box-overlay.show .message-box {
+            transform: scale(1);
+        }
+
+        .message-box h3 {
+            font-size: 1.8rem;
+            color: #4f46e5;
+            margin-bottom: 1rem;
+        }
+
+        .message-box p {
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            margin-bottom: 1.5rem;
+        }
+
+        .message-box button.close-btn {
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: #f8fafc;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .message-box button.close-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.2);
+        }
+
+        /* Styles for LLM Idea Generator within message box */
+        .llm-idea-generator {
+            margin-top: 1.5rem;
+            text-align: left;
+        }
+        .llm-idea-generator label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+        .llm-idea-generator input[type="text"],
+        .llm-idea-generator input[type="email"],
+        .llm-idea-generator select,
+        .llm-idea-generator textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #4a5568;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            background-color: #0f172a;
+            color: #f1f5f9;
+        }
+        .llm-idea-generator input[type="text"]:focus,
+        .llm-idea-generator input[type="email"]:focus,
+        .llm-idea-generator select:focus,
+        .llm-idea-generator textarea:focus {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+            outline: none;
+        }
+        .llm-idea-generator button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: #f8fafc;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .llm-idea-generator button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.2);
+        }
+        .llm-idea-generator .loading-spinner {
+            display: none;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #4f46e5;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            margin: 1rem auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .llm-idea-generator .results {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #0f172a;
+            border-radius: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #4a5568;
+            color: #e2e8f0;
+        }
+        .llm-idea-generator .results h4 {
+            font-weight: 600;
+            color: #4f46e5;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        .llm-idea-generator .results ul {
+            list-style: none;
+            padding: 0;
+        }
+        .llm-idea-generator .results li {
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px dashed #4a5568;
+        }
+        .llm-idea-generator .results li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .llm-idea-generator .results li strong {
+            color: #7c3aed;
+        }
+
+        /* Job Detail Modal Specific Styles */
+        .job-detail-content {
+            text-align: left;
+            padding: 1rem;
+        }
+        .job-detail-content h4 {
+            font-size: 1.5rem;
+            color: #4f46e5;
+            margin-bottom: 0.5rem;
+        }
+        .job-detail-content .department-detail {
+            font-size: 1.1rem;
+            color: #67e8f9;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        .job-detail-content p {
+            font-size: 1rem;
+            color: #e2e8f0;
+            margin-bottom: 1rem;
+        }
+        .job-detail-content .job-skills-detail {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .job-detail-content .skill-chip {
+            background: rgba(6, 182, 212, 0.2);
+            color: #67e8f9;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+        .job-detail-content .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .job-detail-content .action-buttons .btn {
+            width: auto;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(15, 15, 35, 0.95);
+                backdrop-filter: blur(20px);
+                padding: 1rem 0;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .page-hero p {
+                font-size: 1.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .job-grid, .why-join-us ul, .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .floating-submit-btn {
+                bottom: 1rem;
+                right: 1rem;
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="messageBoxOverlay" class="message-box-overlay">
+        <div class="message-box">
+            <h3 id="messageBoxTitle"></h3>
+            <div id="messageBoxContent"></div>
+            <button id="messageBoxClose" class="close-btn">OK</button>
+        </div>
+    </div>
+
+    <div id="jobDetailModalOverlay" class="message-box-overlay">
+        <div class="message-box">
+            <h3 id="jobDetailTitle"></h3>
+            <div id="jobDetailContent" class="job-detail-content">
+                </div>
+            <button id="jobDetailClose" class="close-btn">Close</button>
+        </div>
+    </div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-main">JL</div>
+                <span class="logo-text">Jaiho Labs</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="team.html">Team</a></li>
+                <!--<li><a href="innovation_pipeline.html">Innovation Pipeline</a></li>-->
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="products.html">Products</a>
+        <a href="research.html">Research</a>
+        <a href="team.html">Team</a>
+        <a href="innovation_pipeline.html">Innovation Pipeline</a>
+        <a href="careers.html">Careers</a> <a href="#contact">Contact</a>
+    </div>
+
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <h1>Join Our Mission</h1>
+            <p>Innovate, grow, and shape the future with Jaiho Labs.</p>
+        </div>
+    </section>
+
+    <section id="open-positions" class="section fade-in">
+        <h2>Current Openings</h2>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Roles</button>
+            <button class="filter-btn" data-filter="AI">AI & ML</button>
+            <button class="filter-btn" data-filter="Software">Software Engineering</button>
+            <button class="filter-btn" data-filter="Data">Data Science & Engineering</button>
+            <button class="filter-btn" data-filter="Quantum">Quantum Technologies</button>
+            <button class="filter-btn" data-filter="Operations">Operations & Business</button>
+            <button class="filter-btn" data-filter="Internship">Internships</button>
+            <button class="filter-btn" data-filter="Other">Other</button>
+        </div>
+        <div class="job-grid" id="jobGrid">
+            </div>
+    </section>
+
+    <section id="why-join-us" class="section fade-in why-join-us">
+        <h2>Why Work at Jaiho Labs?</h2>
+        <div class="glass-card">
+            <h3>A Culture of Innovation and Growth</h3>
+            <p class="text-center text-gray-300 mb-6">At Jaiho Labs, we believe in fostering an environment where curiosity thrives, ideas are celebrated, and every team member contributes to groundbreaking advancements. We offer:</p>
+            <ul>
+                <li><i class="fas fa-rocket"></i> <span>Impactful Projects: Work on cutting-edge AI, Quantum, and Software solutions that redefine industries.</span></li>
+                <li><i class="fas fa-users"></i> <span>Collaborative Environment: Join a diverse team of brilliant minds, learn from experts, and grow together.</span></li>
+                <li><i class="fas fa-chart-line"></i> <span>Career Growth: Opportunities for continuous learning, professional development, and advancement.</span></li>
+                <li><i class="fas fa-lightbulb"></i> <span>Innovation Culture: Your ideas are valued and encouraged, with dedicated time for exploration and experimentation.</span></li>
+                <li><i class="fas fa-hand-holding-heart"></i> <span>Competitive Benefits: Comprehensive health, wellness, and financial benefits package.</span></li>
+                <li><i class="fas fa-laptop-code"></i> <span>State-of-the-Art Tech: Access to the latest tools, technologies, and research facilities.</span></li>
+            </ul>
+            <p class="text-center text-gray-400 mt-6">We are committed to creating a workplace that inspires, challenges, and rewards. Come build the future with us!</p>
+        </div>
+    </section>
+
+    <!--<section id="contact" class="section fade-in">
+        <h2>Have Questions?</h2>
+        <p class="text-center text-lg mb-8 text-gray-300">If you don't see a role that fits or have specific career inquiries, feel free to reach out.</p>
+        <div class="glass-card contact-form">
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Career Inquiry" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-full">Send Message</button>
+            </form>
+        </div>
+    </section>-->
+
+    <section id="contact" class="section">
+        <h2>Have Questions?</h2>
+        <div class="glass-card contact-form">
+            <h3 style="color: #a855f7; margin-bottom: 1.5rem; text-align: center;">Connect with Jaiho Labs</h3>
+            <p style="margin-bottom: 1.5rem; text-align: center; color: #e2e8f0;">Have a question about our research, products, or want to collaborate? Reach out to us directly!</p>
+            <p style="margin-top: 1.5rem; color: #f8fafc; text-align: center;"><strong>Email:</strong> <a href="mailto:jaihodigital@gmail.com" style="color: #4f46e5; text-decoration: none;">jaihodigital@gmail.com</a></p>
+            <p style="color: #f8fafc; text-align: center;"><strong>Headquarters:</strong> Tanda Urmar, Punjab, India</p>
+            <p style="color: #f8fafc; text-align: center;"><strong>Development Center:</strong> Mohali, Punjab, India</p>
+            <div class="social-links" style="margin-top: 2rem;">
+                <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/JaihoDigital" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank" aria-label="Hugging Face" title="Hugging Face"><i class="fas fa-robot"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <a href="#" id="floatingSubmitIdeaBtn" class="floating-submit-btn">
+        Submit Your Idea
+    </a>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Jaiho Labs</h3>
+                <p>Where Ideas Become Intelligent Products.</p>
+                <p class="sub-brand">Powered by <a href="https://gemini.google.com/" target="_blank">Gemini</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="innovation_pipeline.html">Innovation Pipeline</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@jaiholabs.com</p>
+                <p>Phone: +1 (123) 456-7890</p>
+                <p>Address: 123 Innovation Drive, Tech City, TX 78901</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="footer-socials">
+                    <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Jaiho Labs. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            // Toggle visibility of desktop nav links on mobile
+            if (window.innerWidth <= 768) {
+                navLinks.classList.toggle('active');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Close mobile menu if window is resized above mobile breakpoint
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active'); // Ensure desktop nav is visible
+            }
+        });
+
+        // Message Box functionality
+        const messageBoxOverlay = document.getElementById('messageBoxOverlay');
+        const messageBoxTitle = document.getElementById('messageBoxTitle');
+        const messageBoxContent = document.getElementById('messageBoxContent');
+        const messageBoxClose = document.getElementById('messageBoxClose');
+
+        function showMessageBox(title, contentHtml) {
+            messageBoxTitle.textContent = title;
+            messageBoxContent.innerHTML = contentHtml;
+            messageBoxOverlay.classList.add('show');
+        }
+
+        messageBoxClose.addEventListener('click', () => {
+            messageBoxOverlay.classList.remove('show');
+            // Clear content after closing
+            messageBoxTitle.textContent = '';
+            messageBoxContent.innerHTML = '';
+        });
+
+        // Job Detail Modal functionality
+        const jobDetailModalOverlay = document.getElementById('jobDetailModalOverlay');
+        const jobDetailTitle = document.getElementById('jobDetailTitle');
+        const jobDetailContent = document.getElementById('jobDetailContent');
+        const jobDetailClose = document.getElementById('jobDetailClose');
+
+        // Job data array
+        const jobRoles = [
+            {
+                id: 'ai-research-scientist',
+                title: 'AI Research Scientist',
+                department: 'AI',
+                description: 'Conducting cutting-edge research in AI, developing novel algorithms, and contributing to scientific publications.',
+                skills: ['Deep Learning', 'NLP', 'Computer Vision', 'PyTorch/TensorFlow', 'Python', 'Research'],
+                link: '#apply-ai-research'
+            },
+            {
+                id: 'ml-research-scientist',
+                title: 'ML Research Scientist',
+                department: 'AI',
+                description: 'Focusing on machine learning model development, experimentation, and optimization for various applications.',
+                skills: ['Machine Learning', 'Scikit-learn', 'Data Modeling', 'Statistical Analysis', 'Python'],
+                link: '#apply-ml-research'
+            },
+            {
+                id: 'data-scientist',
+                title: 'Data Scientist',
+                department: 'Data',
+                description: 'Analyzing complex datasets, building predictive models, and extracting actionable insights to drive business decisions.',
+                skills: ['Data Analysis', 'SQL', 'Python/R', 'Statistics', 'Visualization', 'Big Data'],
+                link: '#apply-data-scientist'
+            },
+            {
+                id: 'data-engineer',
+                title: 'Data Engineer',
+                department: 'Data',
+                description: 'Designing, building, and maintaining scalable data pipelines and infrastructure for large datasets.',
+                skills: ['ETL', 'Cloud Platforms (AWS/GCP/Azure)', 'SQL', 'Spark', 'Kafka', 'Python/Java'],
+                link: '#apply-data-engineer'
+            },
+            {
+                id: 'software-engineer',
+                title: 'Software Engineer',
+                department: 'Software',
+                description: 'Developing robust, scalable, and high-performance software applications across various platforms.',
+                skills: ['Fullstack Development', 'Backend/Frontend', 'Cloud Services', 'API Design', 'System Design'],
+                link: '#apply-software-engineer'
+            },
+            {
+                id: 'cpp-engineer',
+                title: 'C/C++ Engineer',
+                department: 'Software',
+                description: 'Building high-performance, low-latency systems and optimizing existing codebases using C/C++.',
+                skills: ['C++', 'System Programming', 'Algorithms', 'Data Structures', 'Performance Optimization'],
+                link: '#apply-cpp-engineer'
+            },
+            {
+                id: 'system-engineer',
+                title: 'System Engineer',
+                department: 'Software',
+                description: 'Designing, implementing, and managing complex computing systems and infrastructure.',
+                skills: ['Linux', 'Networking', 'Scripting (Bash/Python)', 'Cloud Infrastructure', 'Automation'],
+                link: '#apply-system-engineer'
+            },
+            {
+                id: 'database-architect',
+                title: 'Database Architect',
+                department: 'Data',
+                description: 'Designing, optimizing, and managing robust database systems for high availability and performance.',
+                skills: ['Database Design', 'SQL/NoSQL', 'Database Tuning', 'Data Modeling', 'Cloud Databases'],
+                link: '#apply-db-architect'
+            },
+            {
+                id: 'quantum-engineer',
+                title: 'Quantum Engineer',
+                department: 'Quantum',
+                description: 'Working on the development and implementation of quantum computing hardware and software components.',
+                skills: ['Quantum Mechanics', 'Quantum Algorithms', 'Qiskit/Cirq', 'Python', 'Hardware Integration'],
+                link: '#apply-quantum-engineer'
+            },
+            {
+                id: 'ai-quantum-engineer',
+                title: 'AI Quantum Engineer',
+                department: 'Quantum',
+                description: 'Bridging the gap between AI and Quantum Computing, developing quantum-enhanced AI algorithms.',
+                skills: ['Quantum Computing', 'Machine Learning', 'Optimization', 'Hybrid Algorithms', 'Python'],
+                link: '#apply-ai-quantum-engineer'
+            },
+            {
+                id: 'mathematician',
+                title: 'Mathematician',
+                department: 'Other',
+                description: 'Applying advanced mathematical principles to solve complex problems in AI, cryptography, and data science.',
+                skills: ['Applied Mathematics', 'Linear Algebra', 'Calculus', 'Probability', 'Algorithm Design'],
+                link: '#apply-mathematician'
+            },
+            {
+                id: 'physicist',
+                title: 'Physicist',
+                department: 'Other',
+                description: 'Contributing scientific expertise to fundamental research, especially in quantum physics and material science.',
+                skills: ['Physics', 'Quantum Mechanics', 'Statistical Physics', 'Experimental Design', 'Modeling'],
+                link: '#apply-physicist'
+            },
+            {
+                id: 'hr-specialist',
+                title: 'HR Specialist',
+                department: 'Operations',
+                description: 'Managing talent acquisition, employee relations, and fostering a positive workplace culture.',
+                skills: ['Recruitment', 'Employee Relations', 'HR Policies', 'Communication', 'Organizational Development'],
+                link: '#apply-hr-specialist'
+            },
+            {
+                id: 'marketing-manager',
+                title: 'Marketing Manager',
+                department: 'Operations',
+                description: 'Developing and executing marketing strategies to promote our products and research initiatives.',
+                skills: ['Digital Marketing', 'Content Strategy', 'Brand Management', 'Market Analysis', 'Campaign Management'],
+                link: '#apply-marketing-manager'
+            },
+            {
+                id: 'intern-ai-ml',
+                title: 'AI/ML Intern',
+                department: 'Internship',
+                description: 'Gain hands-on experience in AI and Machine Learning research and development under expert guidance.',
+                skills: ['Python', 'ML Basics', 'Data Preprocessing', 'Problem Solving'],
+                link: '#apply-intern-ai-ml'
+            },
+            {
+                id: 'intern-software',
+                title: 'Software Engineering Intern',
+                department: 'Internship',
+                description: 'Work alongside experienced engineers on real-world software projects, learning best practices.',
+                skills: ['Programming (any)', 'Data Structures', 'Algorithms', 'Web Development Basics'],
+                link: '#apply-intern-software'
+            },
+            {
+                id: 'product-manager',
+                title: 'Product Manager',
+                department: 'Operations',
+                description: 'Defining product vision, strategy, and roadmap, and overseeing product development from conception to launch.',
+                skills: ['Product Strategy', 'Market Analysis', 'Agile Methodologies', 'UX/UI', 'Stakeholder Management'],
+                link: '#apply-product-manager'
+            },
+            {
+                id: 'ux-ui-designer',
+                title: 'UX/UI Designer',
+                department: 'Software',
+                description: 'Creating intuitive and engaging user experiences and visually appealing interfaces for our products.',
+                skills: ['UX Research', 'UI Design', 'Wireframing', 'Prototyping', 'Figma/Sketch/Adobe XD'],
+                link: '#apply-ux-ui-designer'
+            }
+        ];
+
+        function showJobDetailModal(jobId) {
+            const job = jobRoles.find(j => j.id === jobId);
+            if (job) {
+                jobDetailTitle.textContent = job.title;
+                jobDetailContent.innerHTML = `
+                    <p class="department-detail">${job.department} Department</p>
+                    <p class="text-gray-300">${job.description}</p>
+                    <p class="text-gray-300 mt-4"><strong>Required Skills:</strong></p>
+                    <div class="job-skills-detail">
+                        ${job.skills.map(skill => `<span class="skill-chip">${skill}</span>`).join('')}
+                    </div>
+                    <div class="action-buttons">
+                        <a href="${job.link}" target="_blank" class="btn btn-primary">Apply Now</a>
+                        <button class="btn btn-secondary" onclick="copyToClipboard('${window.location.origin}/careers.html#${job.id}')">Copy Link</button>
+                    </div>
+                `;
+                jobDetailModalOverlay.classList.add('show');
+            } else {
+                showMessageBox('Error', 'Job details not found.');
+            }
+        }
+
+        jobDetailClose.addEventListener('click', () => {
+            jobDetailModalOverlay.classList.remove('show');
+            jobDetailTitle.textContent = '';
+            jobDetailContent.innerHTML = '';
+        });
+
+        // Function to render jobs based on filter
+        function renderJobs(filterDepartment) {
+            const jobGrid = document.getElementById('jobGrid');
+            jobGrid.innerHTML = ''; // Clear current jobs
+
+            const filteredJobs = filterDepartment === 'all'
+                ? jobRoles
+                : jobRoles.filter(job => job.department === filterDepartment);
+
+            if (filteredJobs.length === 0) {
+                jobGrid.innerHTML = '<p class="text-center text-gray-400">No roles found for this category at the moment. Please check back later!</p>';
+                return;
+            }
+
+            filteredJobs.forEach(job => {
+                const jobCard = document.createElement('div');
+                jobCard.classList.add('job-card');
+                jobCard.setAttribute('data-job-id', job.id);
+                jobCard.setAttribute('data-department', job.department);
+                jobCard.innerHTML = `
+                    <h3>${job.title}</h3>
+                    <p class="department">${job.department} Department</p>
+                    <p>${job.description}</p>
+                    <div class="job-skills">
+                        ${job.skills.map(skill => `<span class="skill-chip">${skill}</span>`).join('')}
+                    </div>
+                `;
+                jobCard.addEventListener('click', () => showJobDetailModal(job.id));
+                jobGrid.appendChild(jobCard);
+            });
+        }
+
+        // Dynamically load job cards and set up filters
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initial render of all jobs
+            renderJobs('all');
+
+            // Add event listeners to filter buttons
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to the clicked button
+                    button.classList.add('active');
+                    // Render jobs based on the data-filter attribute
+                    const filterDepartment = button.getAttribute('data-filter');
+                    renderJobs(filterDepartment);
+                });
+            });
+        });
+
+        // Function to copy text to clipboard (reused)
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showMessageBox('Link Copied!', 'The link has been copied to your clipboard.');
+            } catch (err) {
+                showMessageBox('Copy Failed', 'Unable to copy the link. Please try manually.');
+            }
+            document.body.removeChild(textarea);
+        }
+
+        // Handle "Submit Your Idea" button click
+        document.getElementById('floatingSubmitIdeaBtn').addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default link behavior
+            showMessageBox(
+                'Submit Your Idea',
+                `
+                <div class="llm-idea-generator">
+                    <p>Share your groundbreaking idea with us! Our team will review it, and if it aligns with our vision, we might even use our AI to help refine it.</p>
+                    <form id="ideaSubmissionForm">
+                        <label for="ideaName">Idea Title</label>
+                        <input type="text" id="ideaName" placeholder="e.g., AI-powered personal assistant" required>
+
+                        <label for="ideaCategory">Category</label>
+                        <select id="ideaCategory" required>
+                            <option value="">Select a category</option>
+                            <option value="AI/ML">AI/Machine Learning</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Mobile App">Mobile App</option>
+                            <option value="Data Science">Data Science</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+                        <label for="ideaDescription">Idea Description</label>
+                        <textarea id="ideaDescription" rows="5" placeholder="Describe your idea in detail..." required></textarea>
+
+                        <label for="contactEmail">Your Email (Optional)</label>
+                        <input type="email" id="contactEmail" placeholder="e.g., your.email@example.com">
+
+                        <button type="submit" id="generateIdeaBtn">Submit Idea</button>
+                        <div class="loading-spinner" id="ideaSpinner"></div>
+                        <div class="results" id="ideaResults" style="display:none;">
+                            <h4>AI Refined Idea:</h4>
+                            <p id="refinedIdeaText"></p>
+                        </div>
+                    </form>
+                </div>
+                `
+            );
+
+            // Add event listener for the form submission inside the modal
+            document.getElementById('ideaSubmissionForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const ideaName = document.getElementById('ideaName').value;
+                const ideaCategory = document.getElementById('ideaCategory').value;
+                const ideaDescription = document.getElementById('ideaDescription').value;
+                const contactEmail = document.getElementById('contactEmail').value;
+                const ideaSpinner = document.getElementById('ideaSpinner');
+                const ideaResults = document.getElementById('ideaResults');
+                const refinedIdeaText = document.getElementById('refinedIdeaText');
+                const submitButton = document.getElementById('generateIdeaBtn');
+
+                ideaSpinner.style.display = 'block';
+                ideaResults.style.display = 'none';
+                submitButton.disabled = true; // Disable button during submission
+
+                const prompt = `Refine the following product idea, focusing on its potential and suggesting a catchy name and a brief, compelling description.
+                Idea Name: ${ideaName}
+                Category: ${ideaCategory}
+                Description: ${ideaDescription}
+
+                Provide the output in a JSON format with 'refinedName', 'refinedDescription', and 'potentialImpact' (a short paragraph).`;
+
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+
+                const payload = {
+                    contents: chatHistory,
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "OBJECT",
+                            properties: {
+                                "refinedName": { "type": "STRING" },
+                                "refinedDescription": { "type": "STRING" },
+                                "potentialImpact": { "type": "STRING" }
+                            },
+                            "propertyOrdering": ["refinedName", "refinedDescription", "potentialImpact"]
+                        }
+                    }
+                };
+
+                const apiKey = ""; // Canvas will provide this at runtime
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const json = result.candidates[0].content.parts[0].text;
+                        const parsedJson = JSON.parse(json);
+
+                        refinedIdeaText.innerHTML = `
+                            <strong>Name:</strong> ${parsedJson.refinedName}<br><br>
+                            <strong>Description:</strong> ${parsedJson.refinedDescription}<br><br>
+                            <strong>Potential Impact:</strong> ${parsedJson.potentialImpact}
+                        `;
+                        ideaResults.style.display = 'block';
+                    } else {
+                        refinedIdeaText.textContent = 'Could not refine the idea. Please try again.';
+                        ideaResults.style.display = 'block';
+                    }
+                } catch (error) {
+                    console.error('Error generating idea:', error);
+                    refinedIdeaText.textContent = 'An error occurred while processing your idea. Please try again later.';
+                    ideaResults.style.display = 'block';
+                } finally {
+                    ideaSpinner.style.display = 'none';
+                    submitButton.disabled = false; // Re-enable button
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
