@@ -641,6 +641,8 @@
             text-transform: uppercase;
         }
 
+        
+
         .floating-submit-btn:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(192, 132, 252, 0.4); /* Lavender Mist glow */
@@ -1231,7 +1233,7 @@
             <p style="color: #f8fafc; text-align: center;"><strong>Development Center:</strong> Mohali, Punjab, India</p>
             <div class="social-links" style="margin-top: 2rem;">
                 <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/JaihoDigital" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://github.com/Jaiho-Digital" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                 <a href="#" target="_blank" aria-label="Hugging Face" title="Hugging Face"><i class="fas fa-robot"></i></a>
             </div>
@@ -1247,30 +1249,39 @@
             <div class="footer-section">
                 <h3>Jaiho Labs</h3>
                 <p>Where Ideas Become Intelligent Products.</p>
-                <p class="sub-brand">A Division of <a href="#" target="_blank">Jaho Digital</a></p>
+                <p class="sub-brand">A Division of <a href="jaihodigital.onrender.com" target="_blank">Jaho Digital</a></p>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="#team">Team</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="team.html">Team</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: info@jaiholabs.com</p>
+            <!--<div class="footer-section">
+                <h3>Connect</h3>
+                <p>Email: jaihodigital@gmail.com/p>
                 <p>Phone: +1 (123) 456-7890</p>
                 <p>Address: 123 Innovation Drive, Tech City, TX 78901</p>
-            </div>
+            </div>-->
             <div class="footer-section">
-                <h3>Follow Us</h3>
+                <h3>Connect</h3>
                 <div class="footer-socials">
                     <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/Jaiho-Digital" target="_blank"><i class="fab fa-github"></i></a>
                     <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-github"></i></a>
                 </div>
+                <p style="margin-top: 1rem;">Email: <a href="mailto:labs@jaihodigital.com">jaihodigital@gmail.com</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Stay updated with our latest innovations!</p>
+                <form id="newsletterForm" style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem;">
+                    <input type="email" placeholder="Your email" style="padding: 10px; border: none; border-radius: 5px; background: rgba(255,255,255,0.15); color: white;">
+                    <button type="submit" class="btn btn-primary" style="width: auto; padding: 10px 20px; font-size: 0.9rem; border-radius: 5px; background: linear-gradient(45deg, #4f46e5, #7c3aed); color: #f8fafc;">Subscribe</button>
+                </form>
             </div>
         </div>
         <div class="footer-bottom">
@@ -1330,6 +1341,15 @@
             // Clear content after closing
             messageBoxTitle.textContent = '';
             messageBoxContent.innerHTML = '';
+        });
+
+        // Newsletter form submission handler (using custom message box)
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            console.log("Newsletter Subscription Email:", email);
+            showMessageBox('Subscribed!', 'Thank you for subscribing to our newsletter!');
+            this.reset();
         });
 
         // Product Detail Modal functionality
