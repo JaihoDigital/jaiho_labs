@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visio AI Helper</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid #4A90E2;
+        }
+        h1 {
+            color: #4A90E2;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            font-weight: 400;
+        }
+        h3 {
+            color: #555;
+            margin-top: 25px;
+            font-weight: 400;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        ol {
+            list-style-type: decimal;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .tip-box {
+            background-color: #e6f7ff;
+            border-left: 5px solid #4A90E2;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: #0056b3;
+        }
+        .tip-box strong {
+            color: #004085;
+        }
+        .code-snippet {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin-bottom: 15px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #777;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Visio AI Helper & Quick Tips</h1>
+
+        <div class="tip-box">
+            <strong>Welcome to Visio AI!</strong> This helper provides quick guidance on how to navigate and utilize the powerful features of our platform.
+        </div>
+
+        <h2>Getting Started</h2>
+        <h3>1. Upload Your Dataset</h3>
+        <ul>
+            <li>Use the "📂 Upload Your Dataset" section on the left.</li>
+            <li>Supported formats: CSV, XLSX, TXT (tab-separated).</li>
+            <li>Ensure your data is clean before uploading for best results.</li>
+        </ul>
+        <div class="tip-box">
+            <strong>Tip:</strong> If you encounter a "Error reading file", double-check the file format and ensure it's not corrupted.
+        </div>
+
+        <h3>2. Review Dataset Previews</h3>
+        <ul>
+            <li>The "🔍 Original Dataset Preview" shows your data as uploaded.</li>
+            <li>The "🔄 Updated Dataset Preview" reflects changes after operations like missing value handling.</li>
+        </ul>
+
+        <h2>Data Preprocessing</h2>
+        <h3>Missing Values Report & Handling</h3>
+        <ul>
+            <li>The "📊 Missing Values Report" on the right provides a summary of missing data.</li>
+            <li><strong>Automatic Handling:</strong> Choose a method (Mean, Median, Mode, Forward/Backward Fill) to apply to all relevant missing values. This is great for a quick fix.</li>
+            <li><strong>Manual Handling:</strong> Select specific columns with missing values and choose a precise imputation method (Mean, Median, Mode, or custom value) for that column.</li>
+        </ul>
+        <div class="tip-box">
+            <strong>Important:</strong> Handling missing values is crucial for accurate model training. Numerical columns can be filled with Mean/Median, while categorical with Mode or a custom string.
+        </div>
+
+        <h2>Data Operations & Algorithms</h2>
+        <h3>1. Define Target Variable and Problem Type</h3>
+        <ul>
+            <li>Located in the top-left expander "⚙️ Data Operations & Algorithms".</li>
+            <li>Select the column your model will predict (the 'Y' variable).</li>
+            <li>Visio AI will try to auto-detect if it's a Classification (predicting categories) or Regression (predicting numbers) problem.</li>
+        </ul>
+
+        <h3>2. Split Data into Train and Test Sets</h3>
+        <ul>
+            <li>After defining the target, you can split your data.</li>
+            <li>Adjust the "Test Set Size" slider (e.g., 0.2 means 20% for testing).</li>
+            <li>Set a "Random State" for reproducible splits.</li>
+            <li><strong>Note:</strong> Visio AI automatically handles basic encoding of categorical features and scaling of numerical features during this step.</li>
+        </ul>
+
+        <h3>3. Select Machine Learning Algorithm</h3>
+        <ul>
+            <li>Based on your problem type (Classification/Regression), a list of suitable algorithms will appear.</li>
+            <li>Choose the algorithm you want to train.</li>
+        </ul>
+        <div class="tip-box">
+            <strong>Tip:</strong> Different algorithms suit different data types and problem complexities. Experiment to find the best fit!
+        </div>
+
+        <h3>4. Train Model & View Results</h3>
+        <ul>
+            <li>Click the "🚀 Train Model" button.</li>
+            <li>The "🧠 Machine Learning Operations" section at the bottom of the page will display performance metrics (Accuracy, MSE, R2, etc.) and a Confusion Matrix for classification.</li>
+        </ul>
+
+        <h2>Visualization</h2>
+        <h3>Generate Pair Plot</h3>
+        <ul>
+            <li>Use the "📈 Generate Pair Plot of Numerical Columns" button below the Missing Values Report.</li>
+            <li>This creates a grid of scatter plots for all numerical column pairs, helping you visualize relationships.</li>
+            <li>Both static (Seaborn) and interactive (Plotly) plots are generated.</li>
+        </ul>
+
+        <h2>Tools in Sidebar</h2>
+        <ul>
+            <li><strong>📝 Note -- Lite:</strong> For quick notes and text editing.</li>
+            <li><strong>😶‍🌫️ WordCloud:</strong> Generate word clouds from text data (requires text input).</li>
+            <li><strong>🤖 Viz AI (img):</strong> (Future feature) AI-powered image visualization.</li>
+            <li><strong>🧮 Calculator:</strong> A simple calculator.</li>
+            <li><strong>⚙️ Viz Editor:</strong> (Future feature) Advanced visualization editing.</li>
+            <li><strong>📄 Viz Report:</strong> (Future feature) Generate a comprehensive data analysis report.</li>
+        </ul>
+
+        <footer>
+            <p><a href="visio_docs.html" target="_blank">Visio AI Docs</a>.</p>
+            <p>For support and inquiries, please visit <a href="https://jaiho-labs.onrender.com" target="_blank">Jaiho Labs</a>.</p>
+            <p>&copy; 2025 Visio AI by Jaiho Labs. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

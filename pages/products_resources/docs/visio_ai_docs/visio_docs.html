@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visio AI Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 20px;
+            background-color: #eef2f5;
+            color: #333;
+        }
+        .container {
+            max-width: 950px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            border-top: 6px solid #4A90E2;
+        }
+        h1 {
+            color: #4A90E2;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+            font-size: 2.5em;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 45px;
+            font-weight: 700;
+            font-size: 1.8em;
+        }
+        h3 {
+            color: #555;
+            margin-top: 30px;
+            font-weight: 600;
+            font-size: 1.4em;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        ol {
+            list-style-type: decimal;
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .highlight {
+            background-color: #e6f7ff;
+            border-left: 5px solid #4A90E2;
+            padding: 15px;
+            margin: 25px 0;
+            border-radius: 6px;
+            color: #0056b3;
+            font-style: italic;
+        }
+        .code-block {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            white-space: pre-wrap; /* Ensures text wraps within the block */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+            font-weight: 600;
+        }
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 25px;
+            border-top: 1px solid #ddd;
+            color: #777;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Visio AI Product Documentation</h1>
+
+        <div class="highlight">
+            Visio AI is a comprehensive web application designed to empower users with intuitive tools for data analysis, visualization, and machine learning. Built with Streamlit, it provides a user-friendly interface to perform complex data science tasks without writing a single line of code.
+        </div>
+
+        <h2>1. Introduction to Visio AI</h2>
+        <p>Visio AI aims to democratize data science, making powerful analytical capabilities accessible to everyone from beginners to seasoned data professionals. It streamlines the workflow from raw data upload to model training and evaluation, all within an interactive and visually appealing environment.</p>
+
+        <h2>2. Key Features</h2>
+
+        <h3>2.1. Data Upload & Management</h3>
+        <ul>
+            <li><strong>Flexible Uploads:</strong> Supports CSV, XLSX, and TXT (tab-separated) formats.</li>
+            <li><strong>Instant Preview:</strong> View your original and updated datasets immediately after upload and modifications.</li>
+        </ul>
+
+        <h3>2.2. Data Preprocessing & Cleaning</h3>
+        <h4>2.2.1. Missing Value Handling</h4>
+        <ul>
+            <li><strong>Automated Imputation:</strong> One-click options for mean, median, mode, forward fill, or backward fill across all relevant columns.</li>
+            <li><strong>Manual Control:</strong> Granular control to select specific columns and apply precise imputation strategies.</li>
+        </ul>
+
+        <h3>2.3. Data Operations & Machine Learning</h3>
+        <h4>2.3.1. Target Variable Definition</h4>
+        <ul>
+            <li>Identify the column you wish to predict.</li>
+            <li>Automatic problem type detection (Classification or Regression) based on target variable characteristics.</li>
+        </ul>
+        <h4>2.3.2. Data Splitting (Train/Test)</h4>
+        <ul>
+            <li>Adjust test set size for robust model validation.</li>
+            <li>Set a random state for reproducible results.</li>
+            <li>Automated internal preprocessing:
+                <ul>
+                    <li>Label Encoding for categorical features.</li>
+                    <li>Standard Scaling for numerical features.</li>
+                </ul>
+            </li>
+        </ul>
+        <h4>2.3.3. Algorithm Selection</h4>
+        <ul>
+            <li>Dynamically filtered list of appropriate machine learning algorithms based on the detected problem type.</li>
+            <li><strong>For Classification:</strong> Logistic Regression, Decision Tree Classifier, Random Forest Classifier, Support Vector Classifier (SVC), K-Nearest Neighbors Classifier, Gaussian Naive Bayes.</li>
+            <li><strong>For Regression:</strong> Linear Regression, Decision Tree Regressor, Random Forest Regressor, Support Vector Regressor (SVR), K-Nearest Neighbors Regressor.</li>
+        </ul>
+        <h4>2.3.4. Model Training & Evaluation</h4>
+        <ul>
+            <li>Initiate model training with a single click.</li>
+            <li>View comprehensive evaluation metrics:
+                <ul>
+                    <li><strong>Classification:</strong> Accuracy, Precision, Recall, F1-Score, and an interactive Confusion Matrix heatmap.</li>
+                    <li><strong>Regression:</strong> Mean Squared Error (MSE), R-squared (R2) score.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>2.4. Data Visualization</h3>
+        <ul>
+            <li><strong>Pair Plots:</strong> Generate both static (Seaborn) and interactive (Plotly) pair plots for numerical columns, revealing relationships and distributions.</li>
+        </ul>
+
+        <h3>2.5. Utility Tools (Sidebar)</h3>
+        <ul>
+            <li><strong>Note -- Lite:</strong> A simple in-app notepad.</li>
+            <li><strong>WordCloud:</strong> Create visual word clouds from text data.</li>
+            <li><strong>Viz AI (img):</strong> (Future Feature) Advanced image-based visualization powered by AI.</li>
+            <li><strong>Calculator:</strong> A basic arithmetic calculator.</li>
+            <li><strong>Viz Editor:</strong> (Future Feature) Tools for advanced customization of visualizations.</li>
+            <li><strong>Viz Report:</strong> (Future Feature) Generate detailed analytical reports.</li>
+        </ul>
+
+        <h2>3. Technical Stack</h2>
+        <p>Visio AI is built leveraging a robust set of open-source technologies, ensuring performance, flexibility, and scalability:</p>
+        <ul>
+            <li><strong>Frontend/Framework:</strong> Streamlit</li>
+            <li><strong>Data Manipulation:</strong> Pandas</li>
+            <li><strong>Numerical Operations:</strong> NumPy</li>
+            <li><strong>Machine Learning:</strong> Scikit-learn</li>
+            <li><strong>Data Visualization:</strong> Matplotlib, Seaborn, Plotly Express</li>
+            <li><strong>Web Integration:</strong> Webbrowser module (for external links)</li>
+        </ul>
+
+        <h2>4. How to Use (Quick Start)</h2>
+        <ol>
+            <li>Launch the Streamlit application (e.g., `streamlit run home.py`).</li>
+            <li>Upload your dataset using the file uploader.</li>
+            <li>Review the "Missing Values Report" and handle missing data using automatic or manual options.</li>
+            <li>Open "Data Operations & Algorithms" expander.</li>
+            <li>Select your target column and observe the detected problem type.</li>
+            <li>Adjust test set size and random state, then train/test split.</li>
+            <li>Choose your preferred Machine Learning Algorithm.</li>
+            <li>Click "Train Model" to run the algorithm.</li>
+            <li>Scroll down to "Machine Learning Operations" to view model performance metrics.</li>
+            <li>Explore relationships in your data using the "Generate Pair Plot" button.</li>
+        </ol>
+
+        <h2>5. Future Enhancements</h2>
+        <p>Jaiho Labs is continuously working to improve Visio AI. Planned features include:</p>
+        <ul>
+            <li>Advanced feature engineering techniques.</li>
+            <li>Hyperparameter tuning and cross-validation options.</li>
+            <li>Model deployment and prediction interfaces.</li>
+            <li>Expanded visualization types and customization.</li>
+            <li>More sophisticated AI-driven insights and recommendations.</li>
+        </ul>
+
+        <footer>
+            <p><a href="visio_helper.html" target="_blank">Visio AI Helper Guide</a>.</p>
+            <p>&copy; 2025 Visio AI by Jaiho Labs. All rights reserved.</p>
+            <p>For support and inquiries, please visit <a href="https://jaiho-labs.onrender.com" target="_blank">Jaiho Labs</a>.</p>
+        </footer>
+    </div>
+</body>
+</html>

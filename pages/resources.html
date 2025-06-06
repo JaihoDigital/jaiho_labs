@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Jaiho Labs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Serif:ital,wght@1,400&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset & Font */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0f0f23; /* Deep space background */
+            color: #e2e8f0; /* Cool Gray text */
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif; /* Futuristic heading font */
+            color: #f8fafc; /* Silver White for headings */
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a202c; /* Darker scrollbar track */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #7c3aed; /* Plasma Purple scrollbar thumb */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4f46e5; /* Indigo Blue on hover */
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 35, 0.8); /* Dark background with transparency */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none; /* Ensure logo link is not underlined */
+        }
+
+        .logo-main {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7); /* Vibrant gradient for logo icon */
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.3);
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, #a855f7); /* White to Plasma Purple gradient */
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #cbd5e1; /* Cool Gray for navigation links */
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #a855f7; /* Plasma Purple on hover */
+            background: rgba(168, 85, 247, 0.1); /* Subtle background on hover */
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: #cbd5e1; /* Cool Gray for hamburger lines */
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 15, 35, 0.95); /* Dark background with more transparency */
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            transform: translateY(-100%);
+            transition: transform 0.4s ease-in-out;
+            z-index: 999;
+            padding-top: 60px;
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+        }
+
+        .mobile-menu a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 1.8rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: #a855f7; /* Plasma Purple */
+        }
+
+        /* Hero Section */
+        .page-hero {
+            height: 50vh; /* Shorter hero for internal pages */
+            background: linear-gradient(135deg, #0f0f23 0%, #1e1b4b 50%, #312e81 100%); /* Deep space gradient */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px; /* Account for fixed nav */
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), /* Blue-purple subtle glow */
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.3) 0%, transparent 50%), /* Plasma Purple subtle glow */
+                radial-gradient(circle at 40% 80%, rgba(168, 85, 247, 0.2) 0%, transparent 50%); /* Lavender Mist subtle glow */
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .page-hero-content {
+            z-index: 2; /* Ensure content is above floating gradients */
+            max-width: 900px;
+            padding: 0 2rem;
+            position: relative;
+            color: #f8fafc; /* Silver White for hero text */
+        }
+
+        .page-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #a855f7, #06b6d4); /* White to Plasma Purple to Cyan gradient */
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .page-hero p {
+            font-size: 1.3rem;
+            color: #cbd5e1; /* Cool Gray */
+            font-weight: 400;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, #a855f7); /* White to Plasma Purple gradient */
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glass Card Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05); /* Light transparent white */
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.08); /* Slightly less transparent on hover */
+            border-color: rgba(168, 85, 247, 0.3); /* Plasma Purple border on hover */
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Resources Grid */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .resource-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+            border-color: rgba(6, 182, 212, 0.4); /* Cyan border on hover */
+        }
+
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .resource-card:hover::before {
+            left: 100%;
+        }
+
+        .resource-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #06b6d4, #67e8f9); /* Cyan gradient for icons */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 2;
+        }
+
+        .resource-card h3 {
+            color: #67e8f9; /* Light Cyan for resource headings */
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .resource-card p {
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6); /* Indigo Blue to Plasma Purple */
+            color: white;
+            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1); /* Transparent white with blur */
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.4); /* Enhanced shadow on hover */
+        }
+
+        /* Special styling for different resource types */
+        .documentation-card {
+            border-left: 4px solid #10b981; /* Emerald accent */
+        }
+
+        .documentation-card .resource-icon {
+            background: linear-gradient(135deg, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .manual-card {
+            border-left: 4px solid #f59e0b; /* Amber accent */
+        }
+
+        .manual-card .resource-icon {
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .learning-card {
+            border-left: 4px solid #8b5cf6; /* Purple accent */
+        }
+
+        .learning-card .resource-icon {
+            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .whitepaper-card {
+            border-left: 4px solid #ef4444; /* Red accent */
+        }
+
+        .whitepaper-card .resource-icon {
+            background: linear-gradient(135deg, #ef4444, #f87171);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .support-card {
+            border-left: 4px solid #06b6d4; /* Cyan accent */
+        }
+
+        .support-card .resource-icon {
+            background: linear-gradient(135deg, #06b6d4, #67e8f9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: #1a202c;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            color: #f1f5f9;
+            border: 1px solid #7c3aed;
+        }
+
+        .modal-overlay.show .modal {
+            transform: scale(1);
+        }
+
+        .modal h3 {
+            font-size: 2rem;
+            color: #4f46e5;
+            margin-bottom: 1rem;
+        }
+
+        .modal p {
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .modal-close {
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: #f8fafc;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .modal-close:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+        }
+
+        .resource-list {
+            list-style: none;
+            text-align: left;
+            margin: 1.5rem 0;
+        }
+
+        .resource-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .resource-list li:last-child {
+            border-bottom: none;
+        }
+
+        .resource-link {
+            color: #67e8f9;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .resource-link:hover {
+            color: #a855f7;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 15, 35, 0.8);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #a855f7;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #a855f7;
+        }
+
+        .footer-socials a {
+            color: #cbd5e1;
+            font-size: 1.8rem;
+            margin-right: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-socials a:hover {
+            color: #a855f7;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .sub-brand {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-top: 0.5rem;
+        }
+        .sub-brand a {
+            color: #4f46e5;
+            text-decoration: underline;
+        }
+        .sub-brand a:hover {
+            color: #7c3aed;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(15, 15, 35, 0.95);
+                backdrop-filter: blur(20px);
+                padding: 1rem 0;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .page-hero p {
+                font-size: 1.2rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .resource-card {
+                padding: 2rem;
+            }
+
+            .modal {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            .modal h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Modal Overlay -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal">
+            <h3 id="modalTitle"></h3>
+            <div id="modalContent"></div>
+            <button id="modalClose" class="modal-close">Close</button>
+        </div>
+    </div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-main">JL</div>
+                <span class="logo-text">Jaiho Labs</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="team.html">Team</a></li>
+                <!--<a href="innovation_pipeline.html">Innovation</a></li>-->
+                <!--<li><a href="resources.html">Resources</a></li>-->
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="products.html">Products</a>
+        <a href="research.html">Research</a>
+        <a href="team.html">Team</a>
+        <a href="innovation_pipeline.html">Innovation Pipeline</a>
+        <a href="resources.html">Resources</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <h1>Resources Hub</h1>
+            <p>Everything you need to get started, learn, and excel with our products.</p>
+        </div>
+    </section>
+
+    <section id="resources-intro" class="section fade-in">
+        <h2>Comprehensive Support & Learning</h2>
+        <div class="glass-card">
+            <p class="text-lg text-center mb-4">Welcome to our comprehensive resources center. Whether you're just getting started with our products, looking to deepen your understanding, or need technical support, we've got you covered. Our resources are carefully curated to help you maximize the potential of our AI solutions, software platforms, and cutting-edge technologies.</p>
+            <p class="text-md text-center text-gray-400">From detailed documentation to hands-on tutorials, technical whitepapers to dedicated support guides - everything is designed to empower you on your journey with Jaiho Labs innovations.</p>
+        </div>
+    </section>
+
+    <section id="main-resources" class="section fade-in">
+        <h2>Resource Categories</h2>
+        <div class="resources-grid">
+            <div class="resource-card documentation-card" onclick="openModal('documentation')">
+                <div class="resource-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3>Documentation</h3>
+                <p>Comprehensive technical documentation, API references, and integration guides for all our products and services.</p>
+                <a href="products_resources/docs/docs.html" class="btn btn-primary">Explore Docs</a>
+            </div>
+
+            <div class="resource-card manual-card" onclick="openModal('manual')">
+                <div class="resource-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h3>Product Manuals</h3>
+                <p>Step-by-step user manuals, quick-start guides, and detailed feature explanations for seamless product usage.</p>
+                <a href="#" class="btn btn-primary">View Manuals</a>
+            </div>
+
+            <div class="resource-card learning-card" onclick="openModal('learning')">
+                <div class="resource-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Learning Resources</h3>
+                <p>Interactive tutorials, video courses, webinars, and educational content to master our technologies.</p>
+                <a href="#" class="btn btn-primary">Start Learning</a>
+            </div>
+
+            <div class="resource-card whitepaper-card" onclick="openModal('whitepaper')">
+                <div class="resource-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <h3>Technical Whitepapers</h3>
+                <p>In-depth research papers, technical analyses, and industry insights from our expert research teams.</p>
+                <a href="#" class="btn btn-primary">Read Papers</a>
+            </div>
+
+            <div class="resource-card support-card" onclick="openModal('support')">
+                <div class="resource-icon">
+                    <i class="fas fa-life-ring"></i>
+                </div>
+                <h3>Support Guide</h3>
+                <p>Troubleshooting guides, FAQ sections, community forums, and direct support channels for immediate assistance.</p>
+                <a href="#" class="btn btn-primary">Get Support</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="quick-access" class="section fade-in">
+        <h2>Quick Access Tools</h2>
+        <div class="glass-card">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
+                <div>
+                    <i class="fas fa-search" style="font-size: 2.5rem; color: #67e8f9; margin-bottom: 1rem;"></i>
+                    <h4 style="color: #67e8f9; margin-bottom: 0.5rem;">Search Documentation</h4>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;">Find specific information quickly across all our resources.</p>
+                </div>
+                <div>
+                    <i class="fas fa-download" style="font-size: 2.5rem; color: #67e8f9; margin-bottom: 1rem;"></i>
+                    <h4 style="color: #67e8f9; margin-bottom: 0.5rem;">Download Center</h4>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;">Access software, SDKs, and development tools.</p>
+                </div>
+                <div>
+                    <i class="fas fa-comments" style="font-size: 2.5rem; color: #67e8f9; margin-bottom: 1rem;"></i>
+                    <h4 style="color: #67e8f9; margin-bottom: 0.5rem;">Community Forum</h4>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;">Connect with other developers and share knowledge.</p>
+                </div>
+                <div>
+                    <i class="fas fa-headset" style="font-size: 2.5rem; color: #67e8f9; margin-bottom: 1rem;"></i>
+                    <h4 style="color: #67e8f9; margin-bottom: 0.5rem;">Live Chat Support</h4>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;">Get real-time assistance from our support team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Jaiho Labs</h3>
+                <p>Where Ideas Become Intelligent Products.</p>
+                <p class="sub-brand">A Division of <a href="#" target="_blank">Jaho Digital</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="..index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="career.html">Careers</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="footer-socials">
+                    <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/Jaiho-Digital" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+                <p style="margin-top: 1rem;">Email: <a href="mailto:labs@jaihodigital.com">jaihodigital@gmail.com</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Stay updated with our latest innovations!</p>
+                <form id="newsletterForm" style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem;">
+                    <input type="email" placeholder="Your email" style="padding: 10px; border: none; border-radius: 5px; background: rgba(255,255,255,0.15); color: white;">
+                    <button type="submit" class="btn btn-primary" style="width: auto; padding: 10px 20px; font-size: 0.9rem; border-radius: 5px; background: linear-gradient(45deg, #4f46e5, #7c3aed); color: #f8fafc;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Jaiho Labs. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            // Toggle visibility of desktop nav links on mobile
+            if (window.innerWidth <= 768) {
+                navLinks.classList.toggle('active');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Close mobile menu if window is resized above mobile breakpoint
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active'); // Ensure desktop nav is visible
+            }
+        });
+
+        // Message Box functionality
+        const messageBoxOverlay = document.getElementById('messageBoxOverlay');
+        const messageBoxTitle = document.getElementById('messageBoxTitle');
+        const messageBoxContent = document.getElementById('messageBoxContent');
+        const messageBoxClose = document.getElementById('messageBoxClose');
+
+        function showMessageBox(title, contentHtml) {
+            messageBoxTitle.textContent = title;
+            messageBoxContent.innerHTML = contentHtml;
+            messageBoxOverlay.classList.add('show');
+        }
+
+        messageBoxClose.addEventListener('click', () => {
+            messageBoxOverlay.classList.remove('show');
+            // Clear content after closing
+            messageBoxTitle.textContent = '';
+            messageBoxContent.innerHTML = '';
+        });
+
+        // Product Detail Modal functionality (reused for general modals if needed)
+        const productDetailModalOverlay = document.getElementById('productDetailModalOverlay');
+        const productDetailTitle = document.getElementById('productDetailTitle');
+        const productDetailContent = document.getElementById('productDetailContent');
+        const productDetailClose = document.getElementById('productDetailClose');
+
+        // This modal is primarily for product details, but its structure can be reused
+        // for other dynamic content if needed on this page.
+        function showGenericModal(title, contentHtml) {
+            productDetailTitle.textContent = title;
+            productDetailContent.innerHTML = contentHtml;
+            productDetailModalOverlay.classList.add('show');
+        }
+
+        productDetailClose.addEventListener('click', () => {
+            productDetailModalOverlay.classList.remove('show');
+            productDetailTitle.textContent = '';
+            productDetailContent.innerHTML = '';
+        });
+
+        // Function to copy text to clipboard (reused)
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showMessageBox('Link Copied!', 'The link has been copied to your clipboard.');
+            } catch (err) {
+                showMessageBox('Copy Failed', 'Unable to copy the link. Please try manually.');
+            }
+            document.body.removeChild(textarea);
+        }
+
+        // Newsletter form submission handler (using custom message box)
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            console.log("Newsletter Subscription Email:", email);
+            showMessageBox('Subscribed!', 'Thank you for subscribing to our newsletter!');
+            this.reset();
+        });
+
+        // Handle "Submit Your Idea" button click
+        document.getElementById('floatingSubmitIdeaBtn').addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default link behavior
+            showMessageBox(
+                'Submit Your Idea',
+                `
+                <div class="llm-idea-generator">
+                    <p>Share your groundbreaking idea with us! Our team will review it, and if it aligns with our vision, we might even use our AI to help refine it.</p>
+                    <form id="ideaSubmissionForm">
+                        <label for="ideaName">Idea Title</label>
+                        <input type="text" id="ideaName" placeholder="e.g., AI-powered personal assistant" required>
+
+                        <label for="ideaCategory">Category</label>
+                        <select id="ideaCategory" required>
+                            <option value="">Select a category</option>
+                            <option value="AI/ML">AI/Machine Learning</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Mobile App">Mobile App</option>
+                            <option value="Data Science">Data Science</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+                        <label for="ideaDescription">Idea Description</label>
+                        <textarea id="ideaDescription" rows="5" placeholder="Describe your idea in detail..." required></textarea>
+
+                        <label for="contactEmail">Your Email (Optional)</label>
+                        <input type="email" id="contactEmail" placeholder="e.g., your.email@example.com">
+
+                        <button type="submit" id="generateIdeaBtn">Submit Idea</button>
+                        <div class="loading-spinner" id="ideaSpinner"></div>
+                        <div class="results" id="ideaResults" style="display:none;">
+                            <h4>AI Refined Idea:</h4>
+                            <p id="refinedIdeaText"></p>
+                        </div>
+                    </form>
+                </div>
+                `
+            );
+
+            // Add event listener for the form submission inside the modal
+            document.getElementById('ideaSubmissionForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const ideaName = document.getElementById('ideaName').value;
+                const ideaCategory = document.getElementById('ideaCategory').value;
+                const ideaDescription = document.getElementById('ideaDescription').value;
+                const contactEmail = document.getElementById('contactEmail').value;
+                const ideaSpinner = document.getElementById('ideaSpinner');
+                const ideaResults = document.getElementById('ideaResults');
+                const refinedIdeaText = document.getElementById('refinedIdeaText');
+                const submitButton = document.getElementById('generateIdeaBtn');
+
+                ideaSpinner.style.display = 'block';
+                ideaResults.style.display = 'none';
+                submitButton.disabled = true; // Disable button during submission
+
+                const prompt = `Refine the following product idea, focusing on its potential and suggesting a catchy name and a brief, compelling description.
+                Idea Name: ${ideaName}
+                Category: ${ideaCategory}
+                Description: ${ideaDescription}
+
+                Provide the output in a JSON format with 'refinedName', 'refinedDescription', and 'potentialImpact' (a short paragraph).`;
+
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+
+                const payload = {
+                    contents: chatHistory,
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "OBJECT",
+                            properties: {
+                                "refinedName": { "type": "STRING" },
+                                "refinedDescription": { "type": "STRING" },
+                                "potentialImpact": { "type": "STRING" }
+                            },
+                            "propertyOrdering": ["refinedName", "refinedDescription", "potentialImpact"]
+                        }
+                    }
+                };
+
+                const apiKey = ""; // Canvas will provide this at runtime
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const json = result.candidates[0].content.parts[0].text;
+                        const parsedJson = JSON.parse(json);
+
+                        refinedIdeaText.innerHTML = `
+                            <strong>Name:</strong> ${parsedJson.refinedName}<br><br>
+                            <strong>Description:</strong> ${parsedJson.refinedDescription}<br><br>
+                            <strong>Potential Impact:</strong> ${parsedJson.potentialImpact}
+                        `;
+                        ideaResults.style.display = 'block';
+                    } else {
+                        refinedIdeaText.textContent = 'Could not refine the idea. Please try again.';
+                        ideaResults.style.display = 'block';
+                    }
+                } catch (error) {
+                    console.error('Error generating idea:', error);
+                    refinedIdeaText.textContent = 'An error occurred while processing your idea. Please try again later.';
+                    ideaResults.style.display = 'block';
+                } finally {
+                    ideaSpinner.style.display = 'none';
+                    submitButton.disabled = false; // Re-enable button
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
