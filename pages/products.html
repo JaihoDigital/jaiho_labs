@@ -6,6 +6,7 @@
     <title>Our Products - Jaiho Labs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Serif:ital,wght@1,400&display=swap" rel="stylesheet">
+    <link rel="icon" href="../images/favicon-32x32.png" type="image/png">
     <style>
         /* Basic Reset & Font */
         * {
@@ -1110,7 +1111,7 @@
                     'Compose diverse text content (articles, summaries)',
                     'Conduct deep, contextual research across vast datasets'
                 ],
-                link: '#product-detail-fission-ai' // Placeholder link
+                link: 'coming_soon_products/fission_ai.html' // Placeholder link
             },
             {
                 id: 'visio-ai',
@@ -1125,7 +1126,7 @@
                     'Customizable report generation and export',
                     'No-code/low-code ML model training for predictive tasks'
                 ],
-                link: '#product-detail-visio-ai' // Placeholder link
+                link: 'https://visio-ai.streamlit.app' // Placeholder link
                 /*links: [
                     { text: "Live Demo", url: "#", icon: "fas fa-external-link-alt" },
                     { text: "GitHub Repo", url: "#", icon: "fab fa-github" }
@@ -1144,7 +1145,7 @@
                     'Real-time image analysis',
                     'Integration with existing visual pipelines'
                 ],
-                link: '#product-detail-radiant-ai' // Placeholder link
+                link: 'coming_soon.html' // Placeholder link
             },
             {
                 id: 'spa-ai',
@@ -1159,7 +1160,7 @@
                     'Integration with third-party applications',
                     'Personalized task automation and reminders'
                 ],
-                link: '#product-detail-spa-ai' // Placeholder link
+                link: 'coming_soon.htmll' // Placeholder link
             },
             {
                 id: 'dev-link-tools',
@@ -1174,7 +1175,7 @@
                     'Project management utilities',
                     'Cross-platform compatibility'
                 ],
-                link: '#product-detail-dev-link' // Placeholder link
+                link: 'https://github.com/avarshvir/Dev-Link-Software-for-Developers-and-Users' // Placeholder link
             },
             {
                 id: 'gita-py',
@@ -1189,7 +1190,7 @@
                     'Cross-referencing and contextual linking',
                     'API for integration into other applications'
                 ],
-                link: '#product-detail-gita-py' // Placeholder link
+                link: 'https://pypi.org/project/gita-py/' // Placeholder link
             },
             {
                 id: 'quantum-sim',
@@ -1204,7 +1205,7 @@
                     'Support for common quantum gates and algorithms',
                     'Educational mode for learning quantum concepts'
                 ],
-                link: '#product-detail-quantum-sim' // Placeholder link
+                link: 'coming_soon_products/under_cons.html' // Placeholder link
             },
             {
                 id: 'q-secure',
@@ -1219,11 +1220,11 @@
                     'Data at rest encryption',
                     'Future-proof security architecture'
                 ],
-                link: '#product-detail-q-secure' // Placeholder link
+                link: 'coming_soon_products/under_cons.html' // Placeholder link
             }
         ];
 
-        function showProductDetailModal(productId) {
+        /*function showProductDetailModal(productId) {
             const product = products.find(p => p.id === productId);
             if (product) {
                 productDetailTitle.textContent = product.name;
@@ -1237,7 +1238,7 @@
                         ${product.features.map(feature => `<li>${feature}</li>`).join('')}
                     </ul>
                     <div class="action-buttons">
-                        <a href="${product.link}" target="_blank" class="btn btn-primary">Learn More</a>
+                        <a href="${product.link}" target="_blank" class="btn btn-primary">View Product</a>
                         <button class="btn btn-secondary" onclick="copyToClipboard('${window.location.origin}/products.html#${product.id}')">Copy Link</button>
                     </div>
                 `;
@@ -1245,7 +1246,34 @@
             } else {
                 showMessageBox('Error', 'Product details not found.');
             }
+        }*/
+
+        function showProductDetailModal(productId) {
+    const product = products.find(p => p.id === productId);
+    if (product) {
+        productDetailTitle.textContent = product.name;
+
+        productDetailContent.innerHTML = `
+            <p class="text-gray-300">${product.description}</p>
+            <div class="tags">
+                ${product.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+            <p class="text-gray-300 mt-4"><strong>Key Features:</strong></p>
+            <ul class="list-disc list-inside text-gray-300 ml-4">
+                ${product.features.map(feature => `<li>${feature}</li>`).join('')}
+            </ul>
+        <div class="action-buttons">
+                <a href="${product.link}" target="_blank" class="btn btn-primary">View Product</a>
+                
+            </div>
+        `;
+
+        productDetailModalOverlay.classList.add('show');
+    } else {
+        showMessageBox('Error', 'Product details not found.');
+    }
         }
+
 
         productDetailClose.addEventListener('click', () => {
             productDetailModalOverlay.classList.remove('show');
