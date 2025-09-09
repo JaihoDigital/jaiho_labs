@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jaiho Labs – Technical White-papers</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ─── Base Styles ─────────────────────────────── */
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}
+    body{background:#0f0f23;color:#e2e8f0;line-height:1.6}
+    .container{max-width:1200px;margin:0 auto;padding:2rem}
+    /* ─── Header ───────────────────────────────────── */
+    .docs-header{text-align:center;margin-bottom:3rem;padding-top:6rem}
+    .docs-header h1{font-size:2.5rem;margin-bottom:1rem;background:linear-gradient(135deg,#fff,#a855f7);-webkit-background-clip:text;color:transparent}
+    .docs-header p{color:#cbd5e1;max-width:700px;margin:0 auto}
+    /* ─── Grid Layout ─────────────────────────────── */
+    .papers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem}
+    .paper-card{background:rgba(255,255,255,.05);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:15px;padding:2rem;transition:.3s}
+    .paper-card:hover{transform:translateY(-5px);border-color:rgba(168,85,247,.4);box-shadow:0 10px 30px rgba(168,85,247,.2)}
+    .paper-icon{width:60px;height:60px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.5rem;color:#fff;background:linear-gradient(135deg,#6366f1,#8b5cf6)}
+    .paper-card h3{margin-bottom:.8rem;color:#f8fafc;font-size:1.1rem}
+    .paper-card p{color:#cbd5e1;font-size:.9rem;margin-bottom:1.3rem}
+    .paper-link{display:flex;align-items:center;color:#a855f7;text-decoration:none;font-size:.9rem;transition:.3s}
+    .paper-link:hover{color:#c4b5fd}
+    .paper-link i{margin-right:.5rem;font-size:.8rem}
+    /* ─── Responsive ──────────────────────────────── */
+    @media(max-width:768px){.papers-grid{grid-template-columns:1fr}.docs-header{padding-top:4rem}.docs-header h1{font-size:2rem}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="docs-header">
+      <h1>Technical White-papers</h1>
+      <p>In-depth research and technology briefs from Jaiho Labs. Click a paper to download or read the PDF.</p>
+    </div>
+
+    <div class="papers-grid">
+      <!-- Paper 1 -->
+      <div class="paper-card">
+        <div class="paper-icon"><i class="fas fa-microchip"></i></div>
+        <h3>How AI is Revolutionizing Robotics</h3>
+        <p>Comprehensive analysis of the AI-robotics convergence, key technologies, industry impact, and future trends.</p>
+        <a href="How_AI_is_Revolutionizing_Robotics.pdf" class="paper-link" target="_blank" rel="noopener">
+          <i class="fas fa-file-pdf"></i> View PDF
+        </a>
+      </div>
+
+      <!-- ── Duplicate this block for more white-papers ── -->
+      <!-- Paper 2 (example) -->
+      <div class="paper-card">
+        <div class="paper-icon" style="background:linear-gradient(135deg,#10b981,#06b6d4)"><i class="fas fa-network-wired"></i></div>
+        <h3>Edge-AI for Real-time Vision Systems</h3>
+        <p>Best practices for deploying lightweight neural networks on embedded devices for high-speed computer vision.</p>
+        <a href="Edge_AI_for_Real_time_Vision_Systems.pdf" class="paper-link" target="_blank" rel="noopener">
+          <i class="fas fa-file-pdf"></i> View PDF
+        </a>
+      </div>
+      <!-- End duplicate block -->
+    </div>
+  </div>
+</body>
+</html>
